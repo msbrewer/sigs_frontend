@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+</head>
+
+<body>
+
+  <div data-bind="if: page() == 'Loading'">
+    Loading...
+  </div>
+
+  <div data-bind="if: page() == 'Login'">
+    <form data-bind="submit: loginButtonClick">
+      <div>
+        <input type="text" placeholder="email" data-bind="textInput: email">
+      </div>
+      <div>
+        <input type="password" placeholder="passwd" data-bind="textInput: passwd">
+      </div>
+      <button data-bind="click: loginButtonClick">Login</button>
+      <div data-bind="text: loginErr"></div>
+    </form>
+  </div>
+
+  <div data-bind="if: page() == 'User'">
+    <div data-bind="if: isAdmin">
+      <a href="/admin" data-bind="click: adminPage">Admin</a>
+    </div>
+    Password
+    <br>
+    <input type="text" placeholder="passwd" data-bind="textInput: passwd">
+    <button data-bind="click: userSavePassword">Save</button>
+    <br>
+    Binance
+    <br>
+    <input type="text" placeholder="api_key" data-bind="textInput: binanceApiKey">
+    <input type="text" placeholder="secret_key" data-bind="textInput: binanceSecretKey">
+    <button data-bind="click: userSaveBinance">Save</Button>
+    <div data-bind="foreach: binancePairs">
+      <div>
+        <span data-bind="text: label"></span>
+        <input type="text" data-bind="textInput: box">
+        <span>"Stop-Loss"</span><input type="checkbox" data-bind="checked: isAverse">
+      </div>
+    </div>
+    <button data-bind="click: startSaveUserPairs">Save</button>
+    <br>
+    Forex
+    <br>
+    <input type="text" placeholder="Forex Username" data-bind="textInput:forexUsername">
+    <input type="text" placeholder="Forex Password" data-bind="textInput:forexPassword">
+    <input type="text" placeholder="Forex API Key" data-bind="textInput:forexApiKey">
+    <button data-bind="click: userSaveForex">Save</button>
+    <div data-bind="foreach: forexPairs">
+      <div>
+        <span data-bind="text: label"></span>
+        <input type="text" data-bind="textInput: box">
+        <span>"Stop-Loss"</span><input type="checkbox" data-bind="checked: isAverse">
+      </div>
+    </div>
+    <button data-bind="click: startSaveUserPairs">Save</button>
+    <br>
+    Oanda
+    <br>
+    <input type="text" placeholder="Oanda Account ID" data-bind="textInput: oandaAcctId">
+    <input type="text" placeholder="Oanda API Key" data-bind="textInput: oandaApiKey">
+    <button data-bind="click: userSaveOanda">Save</button>
+    <div data-bind="foreach: oandaPairs">
+      <div>
+        <span data-bind="text: label"></span>
+        <input type="text" data-bind="textInput: box">
+        <span>"Stop-Loss"</span><input type="checkbox" data-bind="checked: isAverse">
+      </div>
+    </div>
+    <button data-bind="click: startSaveUserPairs">Save</button>
+    <br>
+    <button data-bind="click: userLogout">Logout</button>
+  </div>
+
+  <div data-bind="if: page() == 'Admin'">
+    <button data-bind="click: adminBack">Back</button>
+    <h1>Users</h1>
+    <div>
+      <input type="text" placeholder="Email" data-bind="textInput: newUserEmail">
+      <input type="text" placeholder="password" data-bind="textInput: newUserPassword">
+      <button data-bind="click: addNewUser">Add User</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Binance</th>
+          <th>Binance Pairs</th>
+          <th>Forex</th>
+          <th>Forex Pairs</th>
+          <th>Oanda</th>
+          <th>Oanda Pairs</th>
+          <th>Admin</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody data-bind="foreach: users">
+        <tr>
+          <td data-bind="text: email"></td>
+          <td>
+            <input type="text" data-bind="textInput: passwd">
+          </td>
+          <td>
+            <span>Api Key: </span><span data-bind="text: binance.apiKey">
+            </span><br>
+            <span>Secret Key: </span><span data-bind="text: binance.secretKey">
+            </span>
+          </td>
+          <td>
+            <span data-bind="foreach: binance.pairs">
+              <span data-bind="text: label"></span>
+              <button data-bind="click: $parent.binance.deletePair">Delete
+              </button><br>
+            </span>
+            <input type="text" data-bind="textInput: binance.box">
+            <button data-bind="click: $parent.addBinancePair">Add</button>
+          </td>
+          <td>
+            <span>Username: </span><span data-bind="text: forex.username">
+            </span><br>
+            <span>Password: </span><span data-bind="text: forex.password">
+            </span><br>
+            <span>Api Key: </span><span data-bind="text: forex.apiKey">
+            </span>
+          </td>
+          <td>
+            <span data-bind="foreach: forex.pairs">
+              <span data-bind="text: label"></span>
+              <button data-bind="click: $parent.forex.deletePair">Delete
+              </button><br>
+            </span>
+            <input type="text" data-bind="textInput: forex.box">
+            <button data-bind="click: $parent.addForexPair">Add</button>
+          </td>
+          <td>
+            <span>Account ID: </span><span data-bind="text: oanda.acctId">
+            </span><br>
+            <span>Api Key: </span><span data-bind="text: oanda.apiKey">
+            </span>
+          </td>
+          <td>
+            <span data-bind="foreach: oanda.pairs">
+              <span data-bind="text: label"></span>
+              <button data-bind="click: $parent.oanda.deletePair">Delete
+              </button><br>
+            </span>
+            <input type="text" data-bind="textInput: oanda.box">
+            <button data-bind="click: $parent.addOandaPair">Add</button>
+          </td>
+          <td>
+            <input type="checkbox" data-bind="checked: isAdmin"><br></span>
+            </span>
+          </td>
+          <td>
+            <button data-bind="click: adminSaveUser">Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h1>Pairs</h1>
+    <div>
+      <input type="text" placeholder="Label" data-bind="textInput: newPairLabel">
+      <input type="text" placeholder="Exchange" data-bind="textInput: newPairExchange">
+      <button data-bind="click: addNewPair">Add Pair</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Pair</th>
+          <th>Exchange</th>
+          <th>Trend</th>
+          <th>Confirmation</th>
+          <th>Trig</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody data-bind="foreach: pairs">
+        <tr>
+          <td data-bind="text: label"></td>
+          <td data-bind="text: exchange"></td>
+          <td>
+            <span>Trend: </span>
+            <input type="text" data-bind="textInput: trend">
+          </td>
+          <td>
+            <span>Confirmation: </span>
+            <input type="text" data-bind="textInput: confirmation">
+          </td>
+          <td>
+            <span>Trig: </span>
+            <input type="text" data-bind="textInput: trig">
+          </td>
+          <td>
+            <button data-bind="click: updatePair">Update</button>
+          </td>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    {% include "utils.js" %}
+    {% include "app.js" %}
+    ko.applyBindings(new App());
+  </script>
+
+</body>
+
+</html>

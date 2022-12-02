@@ -1,0 +1,72 @@
+*** Starting uWSGI 2.0.20 (64bit) on [Sat Apr 30 00:49:41 2022] ***
+compiled with version: 11.1.0 on 04 February 2022 00:25:53
+os: Linux-5.16.14-arch1-1 #1 SMP PREEMPT Fri, 11 Mar 2022 17:40:36 +0000
+nodename: vultr
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /var/www/sigs
+detected binary path: /usr/bin/uwsgi
+your processes number limit is 7843
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address candlesurf.sock fd 3
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 437520 bytes (427 KB) for 5 cores
+*** Operational MODE: preforking ***
+*** no app loaded. going in full dynamic mode ***
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 50895)
+spawned uWSGI worker 1 (pid: 50896, cores: 1)
+spawned uWSGI worker 2 (pid: 50897, cores: 1)
+spawned uWSGI worker 3 (pid: 50898, cores: 1)
+spawned uWSGI worker 4 (pid: 50899, cores: 1)
+spawned uWSGI worker 5 (pid: 50900, cores: 1)
+SIGINT/SIGTERM received...killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+worker 5 buried after 1 seconds
+goodbye to uWSGI.
+VACUUM: unix socket candlesurf.sock removed.
+*** Starting uWSGI 2.0.20 (64bit) on [Sat Apr 30 00:50:51 2022] ***
+compiled with version: 11.1.0 on 04 February 2022 00:25:53
+os: Linux-5.16.14-arch1-1 #1 SMP PREEMPT Fri, 11 Mar 2022 17:40:36 +0000
+nodename: vultr
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /var/www/sigs
+detected binary path: /usr/bin/uwsgi
+your processes number limit is 7843
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address candlesurf.sock fd 3
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 437520 bytes (427 KB) for 5 cores
+*** Operational MODE: preforking ***
+*** no app loaded. going in full dynamic mode ***
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 50992)
+spawned uWSGI worker 1 (pid: 50993, cores: 1)
+spawned uWSGI worker 2 (pid: 50994, cores: 1)
+spawned uWSGI worker 3 (pid: 50995, cores: 1)
+spawned uWSGI worker 4 (pid: 50996, cores: 1)
+spawned uWSGI worker 5 (pid: 50997, cores: 1)
+SIGINT/SIGTERM received...killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+worker 5 buried after 1 seconds
+goodbye to uWSGI.
+VACUUM: unix socket candlesurf.sock removed.

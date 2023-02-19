@@ -8,5 +8,4 @@ app = makeApp("dev")
 
 with app.app_context():
     db.create_all()
-    addUser("prayingmantidae@protonmail.com", "WinterGreen77!!", True)
-    addUser("msbrewer@gmail.com", "SAotome614$$", True)
+    addUser("username", "password", True)
